@@ -1,0 +1,60 @@
+install in command prompt/terminal
+pip install requests
+pip install lxml
+pip install bs4
+
+import requests
+import bs4
+import lxml
+result = requests.get("https://www.apple.com")
+type(result)
+print(result.text)
+soup = bs4.BeautifulSoup(result.text,"lxml")
+print(soup)
+print(soup.select('tittle'))
+print(soup.select('tittle')[0].gettext())
+print(soup.select('p'))
+para = soup.select('p')
+print(para[0])
+res = c("https://www.apple.com/in/iphone/?afid=p238%7CsnTdg5ZpO-dc_mtid_209254ho67063_pcrid_650433757859_pgrid_135363319397_pexid__&cid=wwa-in-kwgo-iphone-slid----Avail-")
+soup1 = bs4.BeautifulSoup(res.text,"lxml")
+print(soup1)
+print(soup.select('.classname'))
+print(soup1.select('img')[0])
+print(soup1.select('.imgclassname'))
+sorc = soup1.select('.imgclassname')[0]
+print(sorc['src'])
+img_link = requests.get("https://idestiny.in/product/iphone-14-pro-max/")
+print(img_link.content)
+f = open('type_file_name.jpg','wb')
+f.write(img_link.content)
+f.close
+base_url = 'https://books.toscrape.com/catalogue/page-2.html'
+-- 2.html for page 2
+-- https://books.toscrape.com/catalogue/page-3.html
+--3.html for page 3
+base_url.format('20') --20  for page number
+page_number = 21
+print(base_url.foramt(page_number))
+resu = requests.get(base_url.foramt(page_number))
+soup2 = bs4.BeautifulSoup(resu.text,"lxml")
+print(soup2)
+print(soup2.select(".classname"))
+products = soup2.select(".classname")
+example = products[0]
+print(example)
+print(example.select(".classname.name"))
+print(example.select(".star-rating.Three"))
+print(example.select("a")[1])
+print(example.select("a")[1]["title"])
+two_star_titles = []
+for n in range (1,51):
+      scrap_url = base_url.foramt(n)
+      re = requests.get(scrap_url)
+      sou = bs4.BeautifulSoup(re.text,"lxml")
+      books = sou.select(.classname)
+      for book in books:
+          if len(book.select(".star-rating.Three")) != 0:
+                book_title = example.select('a'[1]['title'])
+                two_star_titles.append(book_title)
+
