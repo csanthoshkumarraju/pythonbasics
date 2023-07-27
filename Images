@@ -1,0 +1,22 @@
+in comand prompt / terminal 
+pip install pillow
+
+from PIL import Image
+mac = Image.open('image_file_name.jpg')
+print(type(mac))
+print(mac.show())
+print(mac.size())
+print(mac.filename())
+print(mac.format_description())
+print(mac.crop(0,0,100,100))
+t = 0;
+b = 0;
+l = 100;
+r = 100;
+print(mac.crop(t,b,l,r))
+print(mac.paste(im=computer,box=(0,0)))
+print(mac.resize(3000,500))
+print(mac.rotate)
+-- RGBA RED, Green , Blue , Alpha
+blue = Image.open('blue_color.png')
+print(blue.putalpha(0))
