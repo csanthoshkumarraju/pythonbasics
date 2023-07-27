@@ -1,0 +1,42 @@
+-- sending email
+import smtplib
+smtp_object = smtp.SMTP('smtp.gmail.com',465)
+print(smtp_object.ehlo())
+print(smtp_objects.starttls())
+password = input('enter password:')
+print(password)
+import getpass
+password1 = getpass.getpass('Password please')
+print(password1)
+email= getpass.getpass('Email: ')
+password4 = getpass.getpass('Password')
+smtp_object.login(email,password4)
+from_address = email
+to_address = email
+subject = input('enter the subject line')
+messege = input('enter the body messege')
+msg = "Subject: "+subject+'\n'+messege
+smtp_object.sendmail(from_address,to_address,msg)
+
+-- receiving emails
+
+import imaplib
+M = imaplib.IMAP4_SSL('imap.gmail.com')
+import getpass
+email= getpass.getpass('Email: ')
+password4 = getpass.getpass('Password')
+M.login(email,password4)
+M.list()
+M.select('inbox')
+typ, data = M.search(None,'BEFORE 27-Jul-2023')
+typ, data = M.search(None,'FROM user@example.com')
+typ, data = M.search(None,'SUBJECT ""NEW TEST PYTHON')
+email_id = data[0]
+result,email_data = M.fetch(email_id,'(RFC822)')
+raw_email_string = raw_email.decode('utf-8')
+import email
+email_messege = email.messege_from_string(raw_email_string)
+for part in email_messege.walk();
+  if part.get_content_type() == 'text/plain'
+     body = part.get_payload(decode=True)
+     print(body)
